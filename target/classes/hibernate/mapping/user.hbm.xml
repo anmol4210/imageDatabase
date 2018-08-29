@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hibernate-mapping>
+	<class table="login" lazy="false" name="com.nagarro.model.User">
+	<id name="id" type="int" column="id">
+		<generator class="increment"></generator>
+	</id>
+		<property name="username" type="string" column="username"></property>
+		<property name="userPassword" type="string" column="user_password"></property>
+	</class>
+</hibernate-mapping>
