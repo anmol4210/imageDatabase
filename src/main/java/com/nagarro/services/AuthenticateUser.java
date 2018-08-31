@@ -9,26 +9,31 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.criterion.Restrictions;
 
+import com.nagarro.constants.Constants;
 import com.nagarro.model.User;
+import com.nagarro.util.HibernateUtil;
 
 public class AuthenticateUser {
-public boolean authenticateUser(Map conditions){
-	SessionFactory sf=new Configuration().configure("hibernate/mapping/hibernate.cfg.xml").buildSessionFactory();
-	Session session= sf.openSession();
-	session.beginTransaction();
-	 Criteria cr = session.createCriteria(User.class);
-	  cr.add(Restrictions.allEq(conditions));
-      List employees = cr.list();
-      System.out.println("Size-> "+employees.size());
-  if(employees.size()>0){
-	  return true;
-  }
-  else{
-	  return false;
-  }
-      // User result=(User) employees.get(0);
-//result.getUsername();
+	/**
+	 * @param conditions
+	 * @return
+	 */
+	public boolean authenticateUser(Map conditions) {
 
-	
-}
+		HibernateUtil hibernateUtil = new HibernateUtil();
+		Session session = hibernateUtil.createSession();
+
+		Criteria cr = session.createCriteria(User.class);
+		cr.add(Restrictions.allEq(conditions));
+		List employees = cr.list();
+		// System.out.println("Size-> "+employees.size());
+		if (employees.size() > 0) {
+			return true;
+		} else {
+			return false;
+		}
+		// User result=(User) employees.get(0);
+		// result.getUsername();
+
+	}
 }
