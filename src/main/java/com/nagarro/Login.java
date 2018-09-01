@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -32,7 +33,10 @@ public class Login extends HttpServlet {
 		// TODO Auto-generated constructor stub
 		// System.out.println("hello world!");
 	}
-
+	public void init(ServletConfig config) throws ServletException {
+		// TODO Auto-generated method stub
+		System.out.println("Inital method");
+	}
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
@@ -59,7 +63,7 @@ public class Login extends HttpServlet {
 		// cr.add(Restrictions.eqOrIsNull("username", "anmol"));
 
 		AuthenticateUser authenticate = new AuthenticateUser();
-System.out.println("1");
+///System.out.println("1");
 		if (authenticate.authenticateUser(conditions)) {
 
 			UserImages userImages = new UserImages();
@@ -77,13 +81,17 @@ System.out.println("1");
 		} else {
 			PrintWriter out = response.getWriter();
 			out.println("<font color='red'>Invalid username or Password</font>");
+			
 			RequestDispatcher rd = request.getRequestDispatcher("./");
 			request.setAttribute("inValid", "true");
-
 			rd.include(request, response);
 			System.out.println("Incorrect username or password");
 		}
 
+	}
+	protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		System.out.println("Delete called");
 	}
 
 }

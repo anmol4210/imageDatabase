@@ -50,7 +50,9 @@ public class UserImages {
 			
 				// System.out.println(
 				// request.getServletPath());//.getRealPath(relativeWebPath);
-				FileOutputStream fos = new FileOutputStream(imageFilePath + "\\test" + index + ".jpg");
+				String imageName=imgNew.getImageName();
+				imageName=imageName.substring(imageName.lastIndexOf("\\")+1, imageName.lastIndexOf("."))+"#"+imgNew.getId();
+				FileOutputStream fos = new FileOutputStream(imageFilePath + "\\" + imageName + ".jpg");
 				fos.write(bAvatar);
 				fos.close();
 			} catch (Exception e) {

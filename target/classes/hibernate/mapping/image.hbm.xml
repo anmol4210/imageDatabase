@@ -5,6 +5,7 @@
 		<generator class="increment"></generator>
 	</id>
 		<property name="username" type="string" column="username"></property>
+		<property name="imageName" type="string" column="image_name"></property>
 		<property name="image" type="byte[]" column="image"></property>
 	</class>
 </hibernate-mapping>

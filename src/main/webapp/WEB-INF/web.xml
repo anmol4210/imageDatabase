@@ -16,6 +16,7 @@
   	<description></description>
   	<servlet-class>com.nagarro.Login</servlet-class>
   </servlet>
+
   <servlet-mapping>
   	<servlet-name>UploadServlet</servlet-name>
   	<url-pattern>/UploadServlet</url-pattern>
@@ -24,5 +25,6 @@
   	<servlet-name>Login</servlet-name>
   	<url-pattern>/Login</url-pattern>
   </servlet-mapping>
+
   
  </web-app>

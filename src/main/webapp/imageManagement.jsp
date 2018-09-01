@@ -22,7 +22,7 @@
       <form action = "UploadServlet" method = "post"
          enctype = "multipart/form-data">
          <input type = "file" name = "file" size = "50" style="display: inline" accept="image/*"/>
-         &nbsp;
+         	&nbsp;
          <input type = "submit" value = "Upload File" />
       </form>
    </div>
@@ -60,14 +60,19 @@ for (int index = 0; index < listOfFiles.length; index++) {
     if (listOfFiles[index].isFile()) {
       //System.out.println("File " + listOfFiles[i].getName());}}
 
+String id=listOfFiles[index].getName();
+id=id.substring(id.lastIndexOf("#")+1,id.lastIndexOf("."));
 out.print("<tr>");
 
 out.print("<td>");
-out.print(index);
+out.print(index+1);
 out.print("</td>");
 
 out.print("<td>");
-out.print(listOfFiles[index].getName());
+String name=listOfFiles[index].getName();
+int indx=name.indexOf("#");
+name=name.substring(0,indx)+name.substring(indx+1);
+out.print(name);
 out.print("</td>");
 
 out.print("<td>");
@@ -76,10 +81,11 @@ out.print(size+"kb");
 out.print("</td>");
 
 out.print("<td>");
+
 out.print("<img src='"+imageFilePath+"\\"+listOfFiles[index].getName()+"' height='150' width='150'/>");
 out.print("</td>");
 out.print("<td>");
-out.print("<button>Update</button> &nbsp; <button>Delete</button>");
+out.print("<form action='UploadServlet' method='get'><input type='hidden' name='action' value='delete'/><input type='hidden' name='imageId' value='"+id+"'/> <input type='submit' value='Delete' /></form> <form action='UploadServlet' method='get'><input type='hidden' name='action' value='update'/><input type='hidden' name='imageId' value='"+id+"'/><input type='submit' value='Update' /></form>");
 out.print("</td>");
 
 out.print("</tr>");

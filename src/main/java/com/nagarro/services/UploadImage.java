@@ -19,8 +19,8 @@ public class UploadImage {
 	public void uploadImage(HttpServletRequest request) {
 
 		File file;
-		int maxFileSize = 1024 * 1024;
-		int maxMemSize = 1024 * 1024*10;
+		int maxFileSize = 5000 * 1024;
+		int maxMemSize = 5000 * 1024*10;
 		// ServletContext context = request.getServletContext();
 		String filePath = Constants.serverFilePath;
 
@@ -62,6 +62,7 @@ public class UploadImage {
 						String fileName = fi.getName();
 						boolean isInMemory = fi.isInMemory();
 						long sizeInBytes = fi.getSize();
+						System.out.println("fileName "+fileName);
 
 						// Write the file
 						if (fileName.lastIndexOf("\\") >= 0) {

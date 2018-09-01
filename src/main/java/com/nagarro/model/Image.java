@@ -2,7 +2,15 @@ package com.nagarro.model;
 
 public class Image {
 	private int id;
-	private String username;
+	private String username,imageName;
+	public String getImageName() {
+		return imageName;
+	}
+
+	public void setImageName(String imageName) {
+		this.imageName = imageName;
+	}
+
 	private byte[] image = null;
 
 	public Image() {

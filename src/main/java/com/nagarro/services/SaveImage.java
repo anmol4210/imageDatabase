@@ -44,7 +44,8 @@ public class SaveImage {
 			image.setImage(imageData);
 
 			image.setUsername(httpSession.getAttribute("username").toString());
-
+			System.out.println(listOfFiles[0].getName());
+			image.setImageName(listOfFiles[0].getName());
 			session.save(image);
 			session.getTransaction().commit();
 			file.delete();

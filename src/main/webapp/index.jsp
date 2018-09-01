@@ -6,7 +6,7 @@
 </head>
 <body>
 
-<form action="Login" method="POST">
+<form action="Login" method="post">
 <div style="padding: 100px 0 0 250px;">
 <div id="login-box">
 <h2>Login Page</h2>
