@@ -13,15 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.hibernate.Criteria;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
-import org.hibernate.criterion.Restrictions;
-import org.hibernate.query.Query;
-
 import com.nagarro.model.Image;
-import com.nagarro.model.User;
 import com.nagarro.services.AuthenticateUser;
 import com.nagarro.services.UserImages;
 
@@ -67,7 +59,7 @@ public class Login extends HttpServlet {
 		// cr.add(Restrictions.eqOrIsNull("username", "anmol"));
 
 		AuthenticateUser authenticate = new AuthenticateUser();
-
+System.out.println("1");
 		if (authenticate.authenticateUser(conditions)) {
 
 			UserImages userImages = new UserImages();
@@ -79,7 +71,7 @@ public class Login extends HttpServlet {
 			request.setAttribute("username", request.getParameter("username"));
 			request.setAttribute("images", images);
 
-			System.out.println("request--- " + ((Image) ((List) request.getAttribute("images")).get(0)).getImage());
+			//System.out.println("request--- " + ((Image) ((List) request.getAttribute("images")).get(0)).getImage());
 			RequestDispatcher rd = request.getRequestDispatcher("/imageManagement.jsp");
 			rd.forward(request, response);
 		} else {

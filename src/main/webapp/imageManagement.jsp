@@ -83,7 +83,9 @@ out.print("<button>Update</button> &nbsp; <button>Delete</button>");
 out.print("</td>");
 
 out.print("</tr>");
-}}
+//listOfFiles[index].delete();
+}
+}
 
 %>
 </table>
