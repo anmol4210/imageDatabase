@@ -16,6 +16,18 @@
   	<description></description>
   	<servlet-class>com.nagarro.Login</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>UpdateImage</servlet-name>
+  	<display-name>UpdateImage</display-name>
+  	<description></description>
+  	<servlet-class>com.nagarro.UpdateImage</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>UpdateImageName</servlet-name>
+  	<display-name>UpdateImageName</display-name>
+  	<description></description>
+  	<servlet-class>com.nagarro.UpdateImageName</servlet-class>
+  </servlet>
 
   <servlet-mapping>
   	<servlet-name>UploadServlet</servlet-name>
@@ -24,6 +36,14 @@
   <servlet-mapping>
   	<servlet-name>Login</servlet-name>
   	<url-pattern>/Login</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>UpdateImage</servlet-name>
+  	<url-pattern>/UpdateImage</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>UpdateImageName</servlet-name>
+  	<url-pattern>/UpdateImageName</url-pattern>
   </servlet-mapping>
 
   

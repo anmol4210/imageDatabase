@@ -1,11 +1,6 @@
 package com.nagarro;
 
 import java.io.IOException;
-
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import java.io.*;
 import java.util.*;
 import javax.servlet.*;
@@ -52,19 +47,16 @@ public class UploadServlet extends HttpServlet {
 			conditions.put("id", Integer.parseInt(request.getParameter("imageId")));
 			DeleteImage deleteImage=new DeleteImage();
 			deleteImage.deleteImage(conditions);
+			
+			Map condtions = new HashMap();
+			condtions.put("username", request.getSession().getAttribute("username"));
+			UserImages userImages = new UserImages();
+			userImages.getUserImages(condtions, request);
+			response.sendRedirect("imageManagement.jsp");
 		}
-		else if ("update".equals(request.getParameter("action"))) {
-			 System.out.println("update called");
-				System.out.println(request.getParameter("imageId"));
-					
-		}
-		
-		Map conditions = new HashMap();
-		conditions.put("username", request.getSession().getAttribute("username"));
-		UserImages userImages = new UserImages();
-		userImages.getUserImages(conditions, request);
 
-		response.sendRedirect("imageManagement.jsp");
+		
+		
 //		RequestDispatcher rd = request.getRequestDispatcher("imageManagement.jsp");
 //		request.setAttribute("inValid", null);
 //		rd.include(request, response);
@@ -87,6 +79,7 @@ public class UploadServlet extends HttpServlet {
 		
 		//System.out.println("username: "+request.getParameter("username"));
 		System.out.println("username-session: "+request.getSession().getAttribute("username"));
+		
 		Map conditions = new HashMap();
 		conditions.put("username", request.getSession().getAttribute("username"));
 		UserImages userImages = new UserImages();

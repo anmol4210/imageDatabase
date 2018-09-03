@@ -51,6 +51,7 @@ public class UserImages {
 				// System.out.println(
 				// request.getServletPath());//.getRealPath(relativeWebPath);
 				String imageName=imgNew.getImageName();
+				System.out.println(imageName);
 				imageName=imageName.substring(imageName.lastIndexOf("\\")+1, imageName.lastIndexOf("."))+"#"+imgNew.getId();
 				FileOutputStream fos = new FileOutputStream(imageFilePath + "\\" + imageName + ".jpg");
 				fos.write(bAvatar);

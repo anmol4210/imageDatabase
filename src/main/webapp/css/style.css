@@ -135,3 +135,91 @@ width: max-content;
     color: #ebebeb;
     font-size: 11px;
 }
+
+      
+         #updateImage {
+            display: none;
+            background-color: #91FF00;
+            border: 1px solid #aaa;
+            position: fixed;
+            width: 250px;
+            left: 50%;
+            margin-left: -100px;
+            padding: 6px 8px 8px;
+            box-sizing: border-box;
+            text-align: center;
+         }
+         #updateImage button {
+            background-color: #48E5DA;
+            display: inline-block;
+            border-radius: 5px;
+            border: 1px solid #aaa;
+            padding: 5px;
+            text-align: center;
+            width: 80px;
+            cursor: pointer;
+         }
+         #updateImage .message {
+            text-align: left;
+         }
+         
+                  #nameChange {
+            display: none;
+            background-color: #91FF00;
+            border: 1px solid #aaa;
+            position: fixed;
+            width: 250px;
+            left: 50%;
+            margin-left: -100px;
+            padding: 6px 8px 8px;
+            box-sizing: border-box;
+            text-align: center;
+         }
+         #nameChange button {
+            background-color: #48E5DA;
+            display: inline-block;
+            border-radius: 5px;
+            border: 1px solid #aaa;
+            padding: 5px;
+            text-align: center;
+            width: 80px;
+            cursor: pointer;
+         }
+         #nameChange .message {
+            text-align: left;
+         }
+         
+         
+          #imageChange {
+            display: none;
+            background-color: #91FF00;
+            border: 1px solid #aaa;
+            position: fixed;
+            width: 250px;
+            left: 50%;
+            margin-left: -100px;
+            padding: 6px 8px 8px;
+            box-sizing: border-box;
+            text-align: center;
+         }
+         #imageChange button {
+            background-color: #48E5DA;
+            display: inline-block;
+            border-radius: 5px;
+            border: 1px solid #aaa;
+            padding: 5px;
+            text-align: center;
+            width: 80px;
+            cursor: pointer;
+         }
+         #imageChange .message {
+            text-align: left;
+         }
+         
+         
+         
+         
+         
+       
+
+
