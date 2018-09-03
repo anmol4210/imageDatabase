@@ -82,9 +82,9 @@ public class Login extends HttpServlet {
 			PrintWriter out = response.getWriter();
 			out.println("<font color='red'>Invalid username or Password</font>");
 			
-			RequestDispatcher rd = request.getRequestDispatcher("./");
-			request.setAttribute("inValid", "true");
-			rd.include(request, response);
+			RequestDispatcher requestDispatcher = request.getRequestDispatcher("./");
+			request.setAttribute("isValid", "true");
+			requestDispatcher.include(request, response);
 			System.out.println("Incorrect username or password");
 		}
 

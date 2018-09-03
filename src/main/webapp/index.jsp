@@ -5,7 +5,12 @@
  
 </head>
 <body>
-
+<%
+if(request.getAttribute("isValid") != null && request.getAttribute("isValid").equals("true")){
+	request.setAttribute("isValid", "false");
+	out.print("<script>alert('Invalid Username or password')</script>");
+}
+%>
 <form action="Login" method="post">
 <div style="padding: 100px 0 0 250px;">
 <div id="login-box">
@@ -25,7 +30,8 @@ Please provide your credential to use this website
 <input type="submit" value="submit" style="margin-left:100px;">
 </div></div>
 </form>
-<a href="">Forgot Password</a> 
+
+<a href="changePassword.jsp">Forgot Password</a> 
 
 </body>
 

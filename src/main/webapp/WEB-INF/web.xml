@@ -28,6 +28,12 @@
   	<description></description>
   	<servlet-class>com.nagarro.UpdateImageName</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>UpdatePasword</servlet-name>
+  	<display-name>UpdatePasword</display-name>
+  	<description></description>
+  	<servlet-class>com.nagarro.UpdatePasword</servlet-class>
+  </servlet>
 
   <servlet-mapping>
   	<servlet-name>UploadServlet</servlet-name>
@@ -44,6 +50,10 @@
   <servlet-mapping>
   	<servlet-name>UpdateImageName</servlet-name>
   	<url-pattern>/UpdateImageName</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>UpdatePasword</servlet-name>
+  	<url-pattern>/UpdatePasword</url-pattern>
   </servlet-mapping>
 
   
