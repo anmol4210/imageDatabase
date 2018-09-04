@@ -1,6 +1,9 @@
 package com.nagarro;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
@@ -8,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.nagarro.services.UpdateImg;
+import com.nagarro.services.UserImages;
 
 /**
  * Servlet implementation class UpdateImage
@@ -27,26 +31,12 @@ public class UpdateImage extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		//response.getWriter().append("Served at: ").append(request.getContextPath());
-//		System.out.println("hello");
-//		System.out.println(request.getParameter("newName"));
-//		
-//		System.out.println(request.getParameter("imageId"));
-		
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-	//	int imageId=Integer.parseInt( request.getSession().getAttribute("imageId").toString());
-//		System.out.println("hello");
-//		System.out.println(request.getParameter("newName"));
-//		
-//		System.out.println(request.getParameter("imageId"));
-//		request.getCookies();
 		int imageid = 0;
 			  Cookie[] cookies=request.getCookies();
 			    if(cookies!=null){
@@ -57,11 +47,13 @@ public class UpdateImage extends HttpServlet {
 			    	}
 			    }
 			    System.out.println(imageid);
-			    //System.out.println(request.getParameter("image"));
 			    UpdateImg updateImage=new UpdateImg();
 			    updateImage.updateImage(imageid, request);
-				response.sendRedirect("imageManagement.jsp");
-		//doGet(request, response);
+				Map condtions = new HashMap();
+				condtions.put("username", request.getSession().getAttribute("username"));
+				UserImages userImages = new UserImages();
+				userImages.getUserImages(condtions, request);
+			    response.sendRedirect("imageManagement.jsp");
 	}
 
 }

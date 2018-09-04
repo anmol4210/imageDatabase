@@ -1,6 +1,9 @@
 package com.nagarro;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
@@ -8,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.nagarro.services.UpdateName;
+import com.nagarro.services.UserImages;
 
 /**
  * Servlet implementation class UpdateImageName
@@ -50,7 +54,12 @@ public class UpdateImageName extends HttpServlet {
 		    updateImageName.updateName(Integer.parseInt(imageid+""), request.getParameter("imgNewName"));
 		    System.out.println(imageid);
 		    System.out.println(request.getParameter("imgNewName"));
-			response.sendRedirect("imageManagement.jsp");
+			
+			Map condtions = new HashMap();
+			condtions.put("username", request.getSession().getAttribute("username"));
+			UserImages userImages = new UserImages();
+			userImages.getUserImages(condtions, request);
+		    response.sendRedirect("imageManagement.jsp");
 
 	
 	}

@@ -25,9 +25,6 @@ public class UploadServlet extends HttpServlet {
 	 * @see HttpServlet#HttpServlet()
 	 */
 	public UploadServlet() {
-		// super();
-		// TODO Auto-generated constructor stub
-		// System.out.println("init constructor");
 	}
 
 	
@@ -38,7 +35,6 @@ public class UploadServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		if ("delete".equals(request.getParameter("action"))) {
 		 System.out.println("delete called");
 			System.out.println(request.getParameter("imageId"));
@@ -57,11 +53,6 @@ public class UploadServlet extends HttpServlet {
 
 		
 		
-//		RequestDispatcher rd = request.getRequestDispatcher("imageManagement.jsp");
-//		request.setAttribute("inValid", null);
-//		rd.include(request, response);
-		
-		//	response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
@@ -70,15 +61,13 @@ public class UploadServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
 
 		UploadImage uploadImage = new UploadImage();
 		uploadImage.uploadImage(request);
 		SaveImage saveimage = new SaveImage();
 		saveimage.storeImage(request);
 		
-		//System.out.println("username: "+request.getParameter("username"));
-		System.out.println("username-session: "+request.getSession().getAttribute("username"));
+//		System.out.println("username-session: "+request.getSession().getAttribute("username"));
 		
 		Map conditions = new HashMap();
 		conditions.put("username", request.getSession().getAttribute("username"));

@@ -13,11 +13,25 @@
 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
+<script type="text/javascript" src="http://code.jquery.com/jquery-2.0.0.js"></script>
+<script type="text/javascript">
+                $(document).ready(
+                          function(){
+                              $('#upload-btn').attr('disabled',true);
+                              $('input:file').change(
+                                  function(){
+                                      if ($(this).val()){
+                                          $('#upload-btn').removeAttr('disabled'); 
+                                      }
+                                      else {
+                                          $('#upload-btn').attr('disabled',true);
+                                      }
+                                  });
+                          });
+     </script>
 
 </head>
 <body>
-
-
 	<h2 style="color: blue; text-align: center">Image Management
 		Utility</h2>
 	<hr>
@@ -32,7 +46,7 @@
 		<form action="UploadServlet" method="post"
 			enctype="multipart/form-data">
 			<input type="file" name="file" size="50" style="display: inline"
-				accept="image/*" /> &nbsp; <input type="submit" value="Upload File" />
+				accept="image/*" /> &nbsp; <input id="upload-btn" type="submit" value="Upload File" />
 		</form>
 	</div>
 	<br>
@@ -50,9 +64,6 @@
 			<th>Preview</th>
 			<th>Action</th>
 		</tr>
-
-
-
 
 		<%@page import="java.io.File"%>
 
@@ -76,8 +87,8 @@
 
 					out.print("<td>");
 					String name = listOfFiles[index].getName();
-					int indx = name.indexOf("#");
-					name = name.substring(0, indx) + name.substring(indx + 1);
+					int indx = name.lastIndexOf("#");
+					name = name.substring(0, indx) + name.substring(name.lastIndexOf("."));
 					out.print(name);
 					out.print("</td>");
 

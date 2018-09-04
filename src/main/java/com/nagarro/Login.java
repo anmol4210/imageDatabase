@@ -2,9 +2,12 @@ package com.nagarro;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
@@ -14,6 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.nagarro.log.Log;
 import com.nagarro.model.Image;
 import com.nagarro.services.AuthenticateUser;
 import com.nagarro.services.UserImages;
@@ -29,13 +33,8 @@ public class Login extends HttpServlet {
 	 * @see HttpServlet#HttpServlet()
 	 */
 	public Login() {
-		// super();
-		// TODO Auto-generated constructor stub
-		// System.out.println("hello world!");
 	}
 	public void init(ServletConfig config) throws ServletException {
-		// TODO Auto-generated method stub
-		System.out.println("Inital method");
 	}
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
@@ -43,9 +42,6 @@ public class Login extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		// response.getWriter().append("Served at:
-		// ").append(request.getContextPath());
 	}
 
 	/**
@@ -54,16 +50,23 @@ public class Login extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
 
 		// Add restriction.
 		Map conditions = new HashMap();
 		conditions.put("username", request.getParameter("username"));
 		conditions.put("userPassword", request.getParameter("password"));
-		// cr.add(Restrictions.eqOrIsNull("username", "anmol"));
+
+		Date date;
+        SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd 'at' h:m:s a z");
+
+          //////// Logging//////////
+          Log log = new Log("log/log.txt");
+          log.logger.setLevel(Level.INFO);
+          date = new Date();
+          log.logger.info("Data Fetched at " + dateFormatter.format(date));
+          log.logger.info("Data Fetched is {"+conditions+"}");
 
 		AuthenticateUser authenticate = new AuthenticateUser();
-///System.out.println("1");
 		if (authenticate.authenticateUser(conditions)) {
 
 			UserImages userImages = new UserImages();
@@ -75,7 +78,6 @@ public class Login extends HttpServlet {
 			request.setAttribute("username", request.getParameter("username"));
 			request.setAttribute("images", images);
 
-			//System.out.println("request--- " + ((Image) ((List) request.getAttribute("images")).get(0)).getImage());
 			RequestDispatcher rd = request.getRequestDispatcher("/imageManagement.jsp");
 			rd.forward(request, response);
 		} else {

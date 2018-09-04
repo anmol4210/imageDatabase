@@ -1,8 +1,11 @@
 package com.nagarro;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Level;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,6 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.nagarro.log.Log;
 import com.nagarro.services.ChangePassword;
 
 /**
@@ -40,7 +44,15 @@ public class UpdatePasword extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Map<String, String> conditions=new HashMap();
 		conditions.put("username",request.getParameter("username"));
-	
+		Date date;
+        SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd 'at' h:m:s a z");
+ 
+		Log log = new Log("log/log.txt");
+         log.logger.setLevel(Level.INFO);
+         date = new Date();
+         log.logger.info("Data Fetched at " + dateFormatter.format(date));
+         log.logger.info("Data Fetched is {"+conditions+"}");
+
 		ChangePassword changePassword=new ChangePassword();
 		if(changePassword.changePassword(conditions, request.getParameter("newPassword"))){
 			response.sendRedirect("index.jsp");
