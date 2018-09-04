@@ -12,7 +12,14 @@ import com.nagarro.model.Image;
 import com.nagarro.model.User;
 import com.nagarro.util.HibernateUtil;
 
+/**
+ * @author anmolnarang
+ *
+ */
 public class DeleteImage {
+/**
+ * @param conditions
+ */
 public void deleteImage(Map conditions){
 	HibernateUtil hibernateUtil = new HibernateUtil();
 	Session session = hibernateUtil.createSession();

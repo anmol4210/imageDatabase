@@ -63,7 +63,16 @@ public class UploadServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		UploadImage uploadImage = new UploadImage();
-		uploadImage.uploadImage(request);
+		boolean updated=uploadImage.uploadImage(request);
+		System.out.println("boolean result: "+updated);
+		if(!updated){
+			RequestDispatcher rd = request.getRequestDispatcher("imageManagement.jsp");
+			request.setAttribute("uploaded", "false");
+			rd.include(request, response);
+			
+			
+		}
+		else{
 		SaveImage saveimage = new SaveImage();
 		saveimage.storeImage(request);
 		
@@ -83,7 +92,7 @@ public class UploadServlet extends HttpServlet {
 		// File theFile = new File("sample_resume.pdf");
 		// input = new FileInputStream(theFile);
 		// myStmt.setBinaryStream(1, input);
-
+	}
 	}
 	
 

@@ -17,7 +17,15 @@ import com.nagarro.constants.Constants;
 import com.nagarro.model.Image;
 import com.nagarro.util.HibernateUtil;
 
+/**
+ * @author anmolnarang
+ *
+ */
 public class UpdateImg {
+/**
+ * @param id
+ * @param request
+ */
 public void updateImage(int id,HttpServletRequest request){
 	
 	HibernateUtil hibernateUtil = new HibernateUtil();

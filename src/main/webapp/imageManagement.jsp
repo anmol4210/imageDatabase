@@ -41,6 +41,13 @@
  <h1>
  <%out.print(request.getSession().getAttribute("username"));%></h1>
  -->
+ 
+ <%
+if(request.getAttribute("uploaded") != null && request.getAttribute("uploaded").equals("false")){
+	request.setAttribute("uploaded", "true");
+	out.print("<script>alert('Image size should be less tham 1mb and folder size should be less than 10mb')</script>");
+}
+%>
 
 	<div style="display: flex; justify-content: center">
 		<form action="UploadServlet" method="post"
@@ -69,14 +76,14 @@
 
 		<%
 			String imageFilePath = new File(".").getAbsolutePath() + "\\images";
-
+			long totalSize=0;
 			File folder = new File(imageFilePath);
 			File[] listOfFiles = folder.listFiles();
 
 			for (int index = 0; index < listOfFiles.length; index++) {
 				if (listOfFiles[index].isFile()) {
 					//System.out.println("File " + listOfFiles[i].getName());}}
-
+					totalSize = totalSize + ((File)listOfFiles[index]).length();
 					String id = listOfFiles[index].getName();
 					id = id.substring(id.lastIndexOf("#") + 1, id.lastIndexOf("."));
 					out.print("<tr>");
@@ -114,9 +121,18 @@
 					//listOfFiles[index].delete();
 				}
 			}
+			request.getSession().setAttribute("folderSize", totalSize);
 		%>
 	</table>
+<%
+out.print("<tr>");
+out.print("<td>");
+long folderSize=Long.parseLong(request.getSession().getAttribute("folderSize")+"")/(1024);
+out.print("Total Size: "+folderSize+"kb");
+out.print("</td>");
+out.print("</tr>"); 
 
+%>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>

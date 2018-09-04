@@ -5,7 +5,15 @@ import org.hibernate.Session;
 import com.nagarro.model.Image;
 import com.nagarro.util.HibernateUtil;
 
+/**
+ * @author anmolnarang
+ *
+ */
 public class UpdateName {
+/**
+ * @param id
+ * @param name
+ */
 public void updateName(int id,String name){
 	
 	HibernateUtil hibernateUtil = new HibernateUtil();

@@ -13,6 +13,10 @@ import com.nagarro.constants.Constants;
 import com.nagarro.model.User;
 import com.nagarro.util.HibernateUtil;
 
+/**
+ * @author anmolnarang
+ *
+ */
 public class AuthenticateUser {
 	/**
 	 * @param conditions
